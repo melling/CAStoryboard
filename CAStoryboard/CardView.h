@@ -10,8 +10,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface CardView : UIView {
-    CATransformLayer *cardContainer;
-
+//    CATransformLayer *cardContainer;
+    UIView *cardFront;
+    UIView *cardBack;
+//    CATextLayer *cardBackText;
+    
 }
+
+- (IBAction)flipCard;
 
 @end

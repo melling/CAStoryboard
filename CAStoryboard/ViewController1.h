@@ -16,7 +16,7 @@
 
     CALayer *hangmanLayer_;
     CATransformLayer *cardContainer;
-    CardView *card1;
+    CardView *card1_;
     
 //    CALayer *cardFront;
 //    CALayer *cardBack;

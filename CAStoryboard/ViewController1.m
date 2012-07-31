@@ -99,7 +99,9 @@ static int count=1;
     [moneyLayer_ setValue:[NSNumber numberWithInt:i] forKey:@"moneyImageIsBen"];
     [moneyLayer_ setNeedsDisplay];
     [self flipCard];
-
+    
+    [card1_ flipCard];
+    
 
 }
 
@@ -192,12 +194,12 @@ static int count=1;
     
     self.view = myView;
     
-//    card1 = [[CardView alloc] initWithFrame:CGRectMake(10, 25, 200, 150)];
-//    card1.tag = 22;
+    card1_ = [[CardView alloc] initWithFrame:CGRectMake(10, 25, 200, 150)];
+    card1_.tag = 22;
     
 //    CardView *card2 = [[CardView alloc] initWithFrame:CGRectMake(225, 25, 200, 150)];
 //    card2.tag = 23;
-//    [myView addSubview:card1];
+    [myView addSubview:card1_];
 //    [myView addSubview:card2];
     
     cardContainer = [CATransformLayer layer];
@@ -233,11 +235,19 @@ static int count=1;
     cardBackText.contentsScale = [[UIScreen mainScreen] scale];
     cardBackText.position = self.view.center;
     cardBackText.position = CGPointMake(40, 50);
+    
 //    cardBackText.position = cardBack.contentsCenter.origin;
 
     cardBackText.string = @"Hello";
 //    cardBack.frame = CGRectMake(0.f, 10.f, cardContainer.frame.size.width, cardContainer.frame.size.height / 10.f);
-    cardBackText.frame     = CGRectMake(55, 60, 100, 30.f);;
+    
+    // David H's fix
+    cardBackText.frame = CGRectMake((200-100)/2, (150-30)/2, 100, 30); // 200, 150
+    NSLog(@"position=%@ anchorPoint=%@ bounds=%@", NSStringFromCGPoint(cardBackText.position),
+          NSStringFromCGPoint(cardBackText.anchorPoint),
+          NSStringFromCGRect(cardBackText.bounds));
+
+//    cardBackText.frame     = CGRectMake(55, 60, 100, 30.f);;
     cardBackText.zPosition = 4;
     cardBackText.backgroundColor = [[UIColor greenColor] CGColor];
     cardBack.transform = CATransform3DMakeRotation(M_PI, 1.0f, 0.0f, 0.0f); // Pre-flip card
